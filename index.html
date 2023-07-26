@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <script>
+      const body = document.body;
+      const successCallback = async (position) => {
+        console.log(position.coords);
+        geoLocation(position.coords.latitude, position.coords.longitude);
+      };
+
+      const errorCallback = (error) => {
+        console.log(error);
+      };
+
+      function geoLocation(latitude, longitude) {
+        let lat = document.createElement("p");
+        let long = document.createElement("p");
+        lat.textContent = "Latitude: " + latitude;
+        long.textContent = "Longitude: " + longitude;
+        body.append(lat, long);
+      }
+
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+    </script>
+  </body>
+</html>
